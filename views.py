@@ -1,60 +1,361 @@
 from django.contrib.auth import login, authenticate
-from django.http import HttpResponse
+
+ 
+
 from django.shortcuts import render, redirect
-from .forms import UserRegistrationForm, UserLoginForm
+
+ 
+
+import os
+
+ 
+
+from django.shortcuts import render
+
+ 
+
+from django.http import JsonResponse
+
+ 
+
 import requests
-import json
-from .models import Vulnerability
-from django.conf import settings
-from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login
+
+ 
+
+from pages.forms import ScanForm
+
+ 
+
+from django.shortcuts import render
+
+ 
+
+from .models import User,Role
+
+from django.http import HttpResponseNotFound
+
+ 
 
 
+ 
+
+def login_view(request):    #login
+
+ 
+
+    error = None
+
+ 
 
 
+ 
 
-def BASE (request):
-    return render(request,'base.html')
+    if request.method == "POST":
 
+ 
 
-def vulnerability_trends(request):
-    # Retrieve vulnerability trend data (replace with your actual data retrieval logic)
-    vulnerability_data = []  # List of tuples (timestamp, count)
+        username = request.POST.get('username')
 
-    return render(request, 'dashboard.html', {'vulnerability_data': vulnerability_data})
+ 
 
+        password = request.POST.get('password')
 
-
-def new_scan(request):
-    # Add any logic here for initiating a new scan
-    return render(request, 'new_scan.html')
-
- # Redirigez vers la page de connexion après la déconnexion
+ 
 
 
+ 
 
-def login_view(request):
-    error = None  # Initialisez la variable d'erreur à None
+        # Print username and password
 
-    if request.method == 'POST':
-        username = request.POST.get("username")
-        password = request.POST.get("password")
-        print("User:", username)
-        print("User:", password)
-        # Vérifiez si l'utilisateur existe dans Django
-        User = authenticate(request, username=username, password=password)
-        print("User:",User)
-        
-        
+ 
+
+        print("Username:", username)
+
+ 
+
+        print("Password:", password)
+
+ 
 
 
-        if User is not None:
-            # Si l'utilisateur existe, connectez-le
-            login(request, User)
-            return redirect('base')  # Redirigez vers home
+ 
+
+        user = authenticate(request, username=username, password=password)
+
+ 
+
+        print("User:", user)  # Print the authenticated user
+
+ 
+
+        if user :
+
+ 
+
+            login(request, user)
+
+ 
+
+            return redirect('BASE')  # Redirect to home after successful login
+
+ 
+
         else:
-            # Si l'utilisateur n'existe pas, définissez un message d'erreur
+
+ 
+
             error = 'INCORRECT USERNAME OR PASSWORD'
 
-    # Affichez la page de connexion avec un éventuel message d'erreur
+ 
+
+   
+
+ 
+
+    # Handle GET request here
+
+ 
+
     return render(request, 'login.html', {'error': error})
+
+ 
+
+
+ 
+
+
+ 
+
+def BASE(request):
+
+ 
+
+    return render(request, 'base.html')
+
+ 
+
+
+ 
+
+def vulnerability_trends(request):   #dashbord
+
+ 
+
+    # Retrieve vulnerability trend data (replace with your actual data retrieval logic)
+
+ 
+
+    vulnerability_data = []  # List of tuples (timestamp, count)
+
+ 
+
+    return render(request, 'base.html', {'vulnerability_data': vulnerability_data})
+
+ 
+
+
+ 
+
+def new_scan(request):
+
+ 
+
+    if request.method == 'GET':
+
+ 
+
+        form = ScanForm()
+
+ 
+
+        return render(request, 'scan.html', {'form': form})
+
+ 
+
+
+ 
+
+    elif request.method == 'POST':
+
+ 
+
+        form = ScanForm(request.POST)
+
+ 
+
+        if form.is_valid():
+
+ 
+
+            scan_result = print('hello')
+
+ 
+
+            if scan_result:
+
+ 
+
+                return JsonResponse({'message': 'Scan started successfully.'})
+
+ 
+
+            else:
+
+ 
+
+                return JsonResponse({'error': 'Failed to start the scan.'}, status=500)
+
+ 
+
+        else:
+
+ 
+
+            return render(request, 'scan.html', {'form': form})
+
+       
+
+        
+
+        
+
+        
+
+#acces au nessus via son url
+
+ 
+
+#def new_scan(request):
+
+ 
+
+    # Rediriger vers l'URL de votre instance Nessus Essentials
+
+ 
+
+    #return redirect('https://192.168.110.144:8834')
+
+def user_page(request):
+
+    mem=User.objects.all()
+
+    return render(request,'user_page.html',{'mem':mem})
+
+ 
+
+def add(request):
+
+    return render(request, 'add.html')
+
+ 
+
+def addrec(request):
+
+    if request.method == 'POST':
+
+        x = request.POST.get('name')
+
+        y = request.POST.get('email')
+
+        z = request.POST.get('password')
+
+        w = request.POST.get('role_id')  # Assuming 'role_id' is the name of the field containing the role ID
+
+ 
+
+        # Assuming 'role' is the ForeignKey field in your User model
+
+        # You need to get the Role object based on the provided role ID
+
+        try:
+
+            role = Role.objects.get(pk=w)
+
+        except Role.DoesNotExist:
+
+            return HttpResponseNotFound("Role ID does not exist")
+
+ 
+
+        # Create and save the new User object
+
+        mem = User.objects.create(user_name=x, email=y, password=z, role=role)
+
+ 
+
+        return redirect("/")
+
+    else:
+
+        # Handle GET request if needed
+
+        pass
+
+ 
+
+def delete(request, id):
+
+    mem = User.objects.get(id=id)
+
+    mem.delete()
+
+    return redirect("/")
+
+ 
+
+def update(request, id):
+
+    mem = User.objects.get(id=id)
+
+    return render(request, 'update.html', {'mem': mem})
+
+ 
+
+def uprec(request, id):
+
+    if request.method == 'POST':
+
+        x = request.POST.get('name')
+
+        y = request.POST.get('email')
+
+        z = request.POST.get('password')
+
+        w = request.POST.get('role_id')
+
+       
+
+        # Assuming 'role' is the ForeignKey field, you need to get the Role object
+
+        # You may need to adjust this part based on how you handle roles in your application
+
+        role = Role.objects.get(id=w)
+
+ 
+
+        # Update the existing User object
+
+        mem = User.objects.get(id=id)
+
+        mem.user_name = x
+
+        mem.email = y
+
+        mem.password = z
+
+        mem.role = role
+
+        mem.save()
+
+ 
+
+        return redirect("/")
+
+    else:
+
+        # Handle GET request if needed
+
+        pass
+
+
+
