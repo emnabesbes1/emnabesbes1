@@ -1,480 +1,1902 @@
-<!DOCTYPE html>charts
+<!DOCTYPE html>
+
+ 
+
 {% load static %}
+
+ 
+
 <html lang="en">
+
+ 
+
 <head>
+
+ 
+
   <meta charset="utf-8">
 
+ 
+
+
+ 
+
+
+ 
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>vulnerability management platform</title>
-  <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="{% static 'assets/plugins/fontawesome-free/css/all.min.css' %}">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-  <!-- Tempusdominus Bootstrap 4 -->
-  <link rel="stylesheet" href="{% static 'assets/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css' %}">
-  <!-- iCheck -->
-  <link rel="stylesheet" href="{% static 'assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css' %}">
-  <!-- JQVMap -->
-  <link rel="stylesheet" href="{%static 'assets/plugins/jqvmap/jqvmap.min.css'%}">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="{%static 'assets/dist/css/adminlte.min.css'%}">
-  <!-- overlayScrollbars -->
-  <link rel="stylesheet" href="{%static 'assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css'%}">
-  <!-- Daterange picker -->
-  <link rel="stylesheet" href="{%static 'assets/plugins/daterangepicker/daterangepicker.css'%}">
-  <!-- summernote -->
-  <link rel="stylesheet" href="{%static 'assets/plugins/summernote/summernote-bs4.min.css'%}">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
 
+ 
+
+  <title>vulnerability management platform</title>
+
+ 
+
+  <!-- Google Font: Source Sans Pro -->
+
+ 
+
+  <link rel="stylesheet" href=https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback>
+
+ 
+
+  <!-- Font Awesome -->
+
+ 
+
+  <link rel="stylesheet" href="{% static 'assets/plugins/fontawesome-free/css/all.min.css' %}">
+
+ 
+
+  <!-- Ionicons -->
+
+ 
+
+  <link rel="stylesheet" href=https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css>
+
+ 
+
+  <!-- Tempusdominus Bootstrap 4 -->
+
+ 
+
+  <link rel="stylesheet" href="{% static 'assets/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css' %}">
+
+ 
+
+  <!-- iCheck -->
+
+ 
+
+  <link rel="stylesheet" href="{% static 'assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css' %}">
+
+ 
+
+  <!-- JQVMap -->
+
+ 
+
+  <link rel="stylesheet" href="{%static 'assets/plugins/jqvmap/jqvmap.min.css'%}">
+
+ 
+
+  <!-- Theme style -->
+
+ 
+
+  <link rel="stylesheet" href="{%static 'assets/dist/css/adminlte.min.css'%}">
+
+ 
+
+  <!-- overlayScrollbars -->
+
+ 
+
+  <link rel="stylesheet" href="{%static 'assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css'%}">
+
+ 
+
+  <!-- Daterange picker -->
+
+ 
+
+  <link rel="stylesheet" href="{%static 'assets/plugins/daterangepicker/daterangepicker.css'%}">
+
+ 
+
+  <!-- summernote -->
+
+ 
+
+  <link rel="stylesheet" href="{%static 'assets/plugins/summernote/summernote-bs4.min.css'%}">
+
+ 
+
+  <script src=https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js></script>
+
+ 
+
+
+ 
+
+
+ 
 
 </head>
+
+ 
+
 <body class="hold-transition sidebar-mini layout-fixed">
-  
+
+ 
+
+
+ 
+
 <div class="wrapper">
 
+ 
+
+
+ 
+
   <!-- Preloader -->
+
+ 
+
   <div class="preloader flex-column justify-content-center align-items-center">
-   
+
+ 
+
+ 
+
+ 
+
   </div>
+
+ 
+
+
+ 
 
   <!-- Navbar -->
+
+ 
+
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+
+ 
+
     <!-- Left navbar links -->
+
+ 
+
     <ul class="navbar-nav">
+
+ 
+
       <li class="nav-item">
+
+ 
+
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+
+ 
+
       </li>
-      
+
+ 
+
+    
+
+ 
+
+
+ 
 
     <!-- Right navbar links -->
-    <ul class="navbar-nav ml-auto">
-      <!-- Navbar Search -->
-      
 
-      
+ 
+
+    <ul class="navbar-nav ml-auto">
+
+ 
+
+      <!-- Navbar Search -->
+
+ 
+
+    
+
+ 
+
+
+ 
+
+    
+
+ 
+
       <!-- Notifications Dropdown Menu -->
+
+ 
+
       <li class="nav-item dropdown">
+
+ 
+
         <a class="nav-link" data-toggle="dropdown" href="#">
+
+ 
+
           <i class="far fa-bell"></i>
+
+ 
+
           <span class="badge badge-warning navbar-badge">15</span>
+
+ 
+
         </a>
+
+ 
+
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+
+ 
+
           <span class="dropdown-item dropdown-header">15 Notifications</span>
+
+ 
+
           <div class="dropdown-divider"></div>
+
+ 
+
           <a href="#" class="dropdown-item">
+
+ 
+
             <i class="fas fa-envelope mr-2"></i> 4 new messages
+
+ 
+
             <span class="float-right text-muted text-sm">3 mins</span>
+
+ 
+
           </a>
+
+ 
+
           <div class="dropdown-divider"></div>
+
+ 
+
           <a href="#" class="dropdown-item">
+
+ 
+
             <i class="fas fa-users mr-2"></i> 8 friend requests
+
+ 
+
             <span class="float-right text-muted text-sm">12 hours</span>
+
+ 
+
           </a>
+
+ 
+
           <div class="dropdown-divider"></div>
+
+ 
+
           <a href="#" class="dropdown-item">
+
+ 
+
             <i class="fas fa-file mr-2"></i> 3 new reports
+
+ 
+
             <span class="float-right text-muted text-sm">2 days</span>
+
+ 
+
           </a>
+
+ 
+
           <div class="dropdown-divider"></div>
+
+ 
+
           <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+
+ 
+
         </div>
+
+ 
+
       </li>
+
+ 
+
       <li class="nav-item">
+
+ 
+
         <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+
+ 
+
           <i class="fas fa-expand-arrows-alt"></i>
+
+ 
+
         </a>
+
+ 
+
       </li>
-     
+
+ 
+
+   
+
+ 
+
     </ul>
+
+ 
+
   </nav>
+
+ 
+
   <!-- /.navbar -->
 
+ 
+
+
+ 
+
   <!-- Main Sidebar Container -->
+
+ 
+
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
+
+ 
+
     <!-- Brand Logo -->
+
+ 
+
     <div style="display: flex; justify-content: center; align-items: center; height: 200px;">
+
+ 
+
       <img src="{% static 'assets/dist/img/EY.png' %}" alt="EY" style="width: 150px; height: 150px" >
+
+ 
+
   </div>
+
+ 
+
+
+ 
 
     <!-- Sidebar -->
+
+ 
+
     <div class="sidebar">
+
+ 
+
+
+ 
+
       <!-- Sidebar user panel (optional) -->
+
+ 
+
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+
+ 
+
         <div class="image">
-         
+
+ 
+
+       
+
+ 
+
         </div>
+
+ 
+
         <div class="info">
+
+ 
+
           <center>
+
+ 
+
               <a href="#" class="d-block">vulnerability management <br> system</a>
+
+ 
+
           </center>
+
+ 
+
       </div>
-      
+
+ 
+
+    
+
+ 
+
       </div>
+
+ 
+
+
+ 
 
       <!-- SidebarSearch Form -->
+
+ 
+
       <div class="form-inline">
+
+ 
+
         <div class="input-group" data-widget="sidebar-search">
+
+ 
+
           <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-          <div class="input-group-append">
-            <button class="btn btn-sidebar">
-              <i class="fas fa-search fa-fw"></i>
-            </button>
-          </div>
+
+ 
+
+          <form action="{% url 'base' %}" method="GET">
+
+ 
+
+            <div class="input-group-append">
+
+ 
+
+                <button type="submit" class="btn btn-sidebar">
+
+ 
+
+                    <i class="fas fa-search fa-fw"></i>
+
+ 
+
+                </button>
+
+ 
+
+            </div>
+
+ 
+
+        </form>
+
+ 
+
         </div>
+
+ 
+
       </div>
+
+ 
+
+
+ 
 
       <!-- Sidebar Menu -->
+
+ 
+
       <nav class="mt-2">
+
+ 
+
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+
+ 
+
           <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-          
+
+ 
+
+              with font-awesome or any other icon font library -->
+
+ 
+
+        
+
+ 
+
+
+ 
 
             <li class="nav-item">
-              <a href="./index.html" class="nav-link active">
+
+ 
+
+              <a href="./base.html" class="nav-link ">
+
+ 
+
                 <i class="far fa-circle nav-icon"></i>
+
+ 
+
                 <p>Dashboard </p>
+
+ 
+
               </a>
-            </li>
+
+ 
+
+           </li>
+
+ 
+
             <li class="nav-item">
-              <a href="{% static 'assets/pages/widgets.html' %}" class="nav-link">
+
+ 
+
+              <a href="./scan.html" class="nav-link">
+
+ 
+
                   <i class="nav-icon fas fa-search"></i> <!-- Changed the icon class to fa-search -->
+
+ 
+
                   <p>
+
+ 
+
                       Scan
+
+ 
+
                   </p>
+
+ 
+
               </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-chart-bar"></i> <!-- Changed the icon class to fa-chart-bar -->
-                <p>
-                    Reports <!-- Updated the text to "Reports" -->
-                    
-                </p>
-            </a>
-        </li>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{%static 'assets/pages/layout/top-nav.html'%}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Top Navigation</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{%static 'assets/pages/layout/top-nav-sidebar.html'%}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Top Navigation + Sidebar</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{%static 'assets/pages/layout/boxed.html'%}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Boxed</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{%static 'assets/pages/layout/fixed-sidebar.html'%}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Fixed Sidebar</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/layout/fixed-sidebar-custom.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Fixed Sidebar <small>+ Custom Area</small></p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/layout/fixed-topnav.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Fixed Navbar</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/layout/fixed-footer.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Fixed Footer</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/layout/collapsed-sidebar.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Collapsed Sidebar</p>
-                </a>
-              </li>
-            </ul>
+
+ 
+
           </li>
 
+ 
+
           <li class="nav-item">
+
+ 
+
             <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-user"></i> <!-- Changed the icon class to fa-user -->
+
+ 
+
+                <i class="nav-icon fas fa-chart-bar"></i> <!-- Changed the icon class to fa-chart-bar -->
+
+ 
+
                 <p>
-                    USER 
+
+ 
+
+                    Reports <!-- Updated the text to "Reports" -->
+
+ 
+
+                   
+
+ 
+
                 </p>
+
+ 
+
             </a>
+
+ 
+
         </li>
+
+ 
+
+            <ul class="nav nav-treeview">
+
+ 
+
+              <li class="nav-item">
+
+ 
+
+                <a href="{%static 'assets/pages/layout/top-nav.html'%}" class="nav-link">
+
+ 
+
+                  <i class="far fa-circle nav-icon"></i>
+
+ 
+
+                  <p>Top Navigation</p>
+
+ 
+
+                </a>
+
+ 
+
+              </li>
+
+ 
+
+              <li class="nav-item">
+
+ 
+
+                <a href="{%static 'assets/pages/layout/top-nav-sidebar.html'%}" class="nav-link">
+
+ 
+
+                  <i class="far fa-circle nav-icon"></i>
+
+ 
+
+                  <p>Top Navigation + Sidebar</p>
+
+ 
+
+                </a>
+
+ 
+
+              </li>
+
+ 
+
+              <li class="nav-item">
+
+ 
+
+                <a href="{%static 'assets/pages/layout/boxed.html'%}" class="nav-link">
+
+ 
+
+                  <i class="far fa-circle nav-icon"></i>
+
+ 
+
+                  <p>Boxed</p>
+
+ 
+
+                </a>
+
+ 
+
+              </li>
+
+ 
+
+              <li class="nav-item">
+
+ 
+
+                <a href="{%static 'assets/pages/layout/fixed-sidebar.html'%}" class="nav-link">
+
+ 
+
+                  <i class="far fa-circle nav-icon"></i>
+
+ 
+
+                  <p>Fixed Sidebar</p>
+
+ 
+
+                </a>
+
+ 
+
+              </li>
+
+ 
+
+              <li class="nav-item">
+
+ 
+
+                <a href="pages/layout/fixed-sidebar-custom.html" class="nav-link">
+
+ 
+
+                  <i class="far fa-circle nav-icon"></i>
+
+ 
+
+                  <p>Fixed Sidebar <small>+ Custom Area</small></p>
+
+ 
+
+                </a>
+
+ 
+
+              </li>
+
+ 
+
+              <li class="nav-item">
+
+ 
+
+                <a href="pages/layout/fixed-topnav.html" class="nav-link">
+
+ 
+
+                  <i class="far fa-circle nav-icon"></i>
+
+ 
+
+                  <p>Fixed Navbar</p>
+
+ 
+
+                </a>
+
+ 
+
+              </li>
+
+ 
+
+              <li class="nav-item">
+
+ 
+
+                <a href="pages/layout/fixed-footer.html" class="nav-link">
+
+ 
+
+                  <i class="far fa-circle nav-icon"></i>
+
+ 
+
+                  <p>Fixed Footer</p>
+
+ 
+
+                </a>
+
+ 
+
+              </li>
+
+ 
+
+              <li class="nav-item">
+
+ 
+
+                <a href="pages/layout/collapsed-sidebar.html" class="nav-link">
+
+ 
+
+                  <i class="far fa-circle nav-icon"></i>
+
+ 
+
+                  <p>Collapsed Sidebar</p>
+
+ 
+
+                </a>
+
+ 
+
+              </li>
+
+ 
+
+            </ul>
+
+ 
+
+          </li>
+
+ 
+
+
+ 
+
           <li class="nav-item">
-            <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-life-ring"></i> <!-- Changed the icon class to fa-life-ring -->
-                <p>
-                    Support
-                  
-                </p>
-            </a>
-        </li>
-         
-         
+
+ 
+
           
+
+ 
+
+            <a href="./user_page.html" class="nav-link ">
+
+ 
+
+                <i class="nav-icon fas fa-user"></i> <!-- Changed the icon class to fa-user -->
+
+ 
+
+                <p>
+
+ 
+
+                    USER
+
+ 
+
+                </p>
+
+ 
+
+            </a>
+
+ 
+
+        </li>
+
+ 
+
+          <li class="nav-item">
+
+ 
+
+            <a href="#" class="nav-link">
+
+ 
+
+                <i class="nav-icon fas fa-life-ring"></i> <!-- Changed the icon class to fa-life-ring -->
+
+ 
+
+                <p>
+
+ 
+
+                    Support
+
+ 
+
+                
+
+ 
+
+                </p>
+
+ 
+
+            </a>
+
+ 
+
+        </li>
+
+ 
+
+       
+
+ 
+
+        
+
+ 
+
+         
+
+ 
+
         </ul>
+
+ 
+
       </nav>
+
+ 
+
       <!-- /.sidebar-menu -->
+
+ 
+
     </div>
+
+ 
+
     <!-- /.sidebar -->
+
+ 
+
   </aside>
+
+ 
+
+
+ 
 
   <!-- Content Wrapper. Contains page content -->
+
+ 
+
   <div class="content-wrapper">
+
+ 
+
     <!-- Content Header (Page header) -->
+
+ 
+
     <div class="content-header">
+
+ 
+
       <div class="container-fluid">
+
+ 
+
         <div class="row mb-2">
+
+ 
+
           <div class="col-sm-6">
+
+ 
+
             <h1 class="m-0">Dashboard</h1>
+
+ 
+
           </div><!-- /.col -->
+
+ 
+
+        
+
+ 
+
           
-           
+
+ 
+
         </div><!-- /.row -->
+
+ 
+
       </div><!-- /.container-fluid -->
+
+ 
+
     </div>
+
+ 
+
     <!-- /.content-header -->
 
+ 
+
+
+ 
+
     <!-- Main content -->
+
+ 
+
     <section class="content">
+
+ 
+
       <div class="container-fluid">
+
+ 
+
         <!-- Small boxes (Stat box) -->
+
+ 
+
         <div class="row">
+
+ 
+
           <div class="col-lg-3 col-6">
+
+ 
+
             <!-- small box -->
+
+ 
+
             <div class="small-box bg-info">
+
+ 
+
               <div class="inner">
+
+ 
+
                 <h3>0</h3>
+
+ 
+
+
+ 
 
                 <p> total vulnerabilities</p>
+
+ 
+
               </div>
-              <div class="icon">
+
+ 
+
+             <div class="icon">
+
+ 
+
                 <i class="fas fa-shield-alt"></i>
+
+ 
+
               </div>
+
+ 
+
               <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+
+ 
+
             </div>
+
+ 
+
           </div>
+
+ 
+
           <!-- ./col -->
+
+ 
+
           <div class="col-lg-3 col-6">
+
+ 
+
             <!-- small box -->
+
+ 
+
             <div class="small-box bg-success">
+
+ 
+
               <div class="inner">
+
+ 
+
                 <h3>0<sup style="font-size: 20px"></sup></h3>
 
+ 
+
+
+ 
+
                 <p>resolved vulnerabilities</p>
+
+ 
+
               </div>
+
+ 
+
               <div class="icon">
+
+ 
+
                 <i class="fas fa-check-circle"></i>
+
+ 
+
               </div>
+
+ 
+
               <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+
+ 
+
             </div>
+
+ 
+
           </div>
+
+ 
+
           <!-- ./col -->
+
+ 
+
           <div class="col-lg-3 col-6">
+
+ 
+
             <!-- small box -->
+
+ 
+
             <div class="small-box bg-warning">
+
+ 
+
               <div class="inner">
+
+ 
+
                 <h3>0</h3>
+
+ 
+
+
+ 
 
                 <p>assets</p>
+
+ 
+
               </div>
+
+ 
+
               <div class="icon">
+
+ 
+
                 <i class="fas fa-desktop"></i>
+
+ 
+
               </div>
+
+ 
+
               <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+
+ 
+
             </div>
+
+ 
+
           </div>
+
+ 
+
           <!-- ./col -->
+
+ 
+
           <div class="col-lg-3 col-6">
+
+ 
+
             <!-- small box -->
+
+ 
+
             <div class="small-box bg-danger">
+
+ 
+
               <div class="inner">
+
+ 
+
                 <h3>0</h3>
 
+ 
+
+
+ 
+
                 <p>reports</p>
+
+ 
+
               </div>
+
+ 
+
               <div class="icon">
+
+ 
+
                 <i class="ion ion-pie-graph"></i>
+
+ 
+
               </div>
+
+ 
+
               <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+
+ 
+
             </div>
+
+ 
+
           </div>
+
+ 
+
           <!-- ./col -->
+
+ 
+
         </div>
+
+ 
+
         <!-- /.row -->
+
+ 
+
         <!-- Main row -->
+
+ 
+
 <div class="row">
+
+ 
+
     <!-- Left col -->
+
+ 
+
     <section class="col-lg-7 connectedSortable">
+
+ 
+
         <!-- Custom tabs (Charts with tabs)-->
+
+ 
+
         <div class="card">
+
+ 
+
             <div class="card-header">
+
+ 
+
                 <h3 class="card-title">
+
+ 
+
                     <i class="fas fa-chart-pie mr-1"></i>
+
+ 
+
                     Severity
+
+ 
+
                 </h3>
-                
+
+ 
+
+              
+
+ 
+
             </div><!-- /.card-header -->
+
+ 
+
             <div class="card-body">
+
+ 
+
                 <div class="tab-content p-0">
+
+ 
+
                     <!-- Chart.js pie chart -->
+
+ 
+
                     <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 300px;">
+
+ 
+
                         <canvas id="pie-chart-canvas" height="300"></canvas>
+
+ 
+
                     </div>
+
+ 
+
                     <!-- Chart.js donut chart (you can change this to another type of chart) -->
+
+ 
+
                     <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 300px;">
+
+ 
+
                         <canvas id="donut-chart-canvas" height="300"></canvas>
+
+ 
+
                     </div>
+
+ 
+
                 </div>
+
+ 
+
             </div><!-- /.card-body -->
+
+ 
+
         </div>
+
+ 
+
         <!-- /.card -->
+
+ 
+
     </section>
+
+ 
+
 </div>
+
+ 
+
 <!-- /.row -->
 
+ 
+
+
+ 
+
 <script>
+
+ 
+
     // Code for initializing and rendering the pie chart using Chart.js
+
+ 
+
     var pieChartCanvas = document.getElementById('pie-chart-canvas').getContext('2d');
+
+ 
+
     var pieChartData = {
+
+ 
+
         labels: ['High', 'Medium', 'Low'],
+
+ 
+
         datasets: [{
+
+ 
+
             label: 'Severity',
+
+ 
+
             backgroundColor: ['#ff4d4d', '#ff9933', '#33cc33'],
+
+ 
+
             data: [50, 30, 20]
+
+ 
+
         }]
+
+ 
+
     };
+
+ 
+
     var pieChart = new Chart(pieChartCanvas, {
+
+ 
+
         type: 'pie',
+
+ 
+
         data: pieChartData,
+
+ 
+
         options: {
+
+ 
+
             responsive: true,
+
+ 
+
             maintainAspectRatio: false
+
+ 
+
         }
+
+ 
+
     });
+
+ 
+
 </script>
 
+ 
+
+
+ 
+
+
+ 
 
 <!-- Add a section for vulnerability trends chart -->
+
+ 
+
 <div class="row">
+
+ 
+
   <div class="col-md-8">
+
+ 
+
       <div class="card">
+
+ 
+
           <div class="card-header">
+
+ 
+
               <h3 class="card-title">Vulnerability Trends</h3>
+
+ 
+
           </div>
+
+ 
+
           <div class="card-body">
+
+ 
+
               <!-- Canvas element for the chart -->
+
+ 
+
               <canvas id="vulnerability-chart"></canvas>
+
+ 
+
           </div>
+
+ 
+
       </div>
+
+ 
+
   </div>
+
+ 
+
 </div>
+
+ 
+
+
+ 
 
 <!-- Include Chart.js library -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+ 
+
+<script src=https://cdn.jsdelivr.net/npm/chart.js></script>
+
+ 
+
+
+ 
 
 <!-- JavaScript code to render the chart -->
+
+ 
+
 <script>
+
+ 
+
   // Retrieve vulnerability trend data passed from the view
+
+ 
+
   var vulnerabilityData = JSON.parse("{{ vulnerability_data|escapejs }}");
 
+ 
+
+
+ 
+
   // Extract timestamps and counts from the data
+
+ 
+
   var timestamps = vulnerabilityData.map(function(item) {
+
+ 
+
       return item[0];
+
+ 
+
   });
+
+ 
+
   var counts = vulnerabilityData.map(function(item) {
+
+ 
+
       return item[1];
+
+ 
+
   });
+
+ 
+
+
+ 
 
   // Render the chart using Chart.js
+
+ 
+
   var ctx = document.getElementById('vulnerability-chart').getContext('2d');
+
+ 
+
   var chart = new Chart(ctx, {
+
+ 
+
       type: 'line',
+
+ 
+
       data: {
+
+ 
+
           labels: timestamps,
+
+ 
+
           datasets: [{
+
+ 
+
               label: 'Vulnerabilities',
+
+ 
+
               data: counts,
+
+ 
+
               backgroundColor: 'rgba(54, 162, 235, 0.2)',
+
+ 
+
               borderColor: 'rgba(54, 162, 235, 1)',
+
+ 
+
               borderWidth: 1
+
+ 
+
           }]
+
+ 
+
       },
+
+ 
+
       options: {
+
+ 
+
           scales: {
+
+ 
+
               x: {
+
+ 
+
                   type: 'time',
+
+ 
+
                   time: {
+
+ 
+
                       unit: 'day'
+
+ 
+
                   }
+
+ 
+
               },
+
+ 
+
               y: {
+
+ 
+
                   beginAtZero: true
+
+ 
+
               }
+
+ 
+
           }
+
+ 
+
       }
+
+ 
+
   });
+
+ 
+
 </script>
-            
-           
+
+ 
+
+          
+
+ 
+
+          
+
+ 
+
+
+ 
 
   <!-- Control Sidebar -->
+
+ 
+
   <aside class="control-sidebar control-sidebar-dark">
+
+ 
+
     <!-- Control sidebar content goes here -->
+
+ 
+
   </aside>
+
+ 
+
   <!-- /.control-sidebar -->
+
+ 
+
 </div>
+
+ 
+
 <!-- ./wrapper -->
 
+ 
+
+
+ 
+
 <!-- jQuery -->
+
+ 
+
 <script src="{%static 'assets/plugins/jquery/jquery.min.js'%}"></script>
+
+ 
+
 <!-- jQuery UI 1.11.4 -->
+
+ 
+
 <script src="{%static 'assets/plugins/jquery-ui/jquery-ui.min.js'%}"></script>
+
+ 
+
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+
+ 
+
 <script>
+
+ 
+
   $.widget.bridge('uibutton', $.ui.button)
+
+ 
+
 </script>
+
+ 
+
 <!-- Bootstrap 4 -->
+
+ 
+
 <script src="{%static 'assets/plugins/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
+
+ 
+
 <!-- ChartJS -->
+
+ 
+
 <script src="{%static 'assets/plugins/chart.js/Chart.min.js'%}"></script>
+
+ 
+
 <!-- Sparkline -->
+
+ 
+
 <script src="{%static 'assets/plugins/sparklines/sparkline.js'%}"></script>
+
+ 
+
 <!-- JQVMap -->
+
+ 
+
 <script src="{%static 'assets/plugins/jqvmap/jquery.vmap.min.js'%}"></script>
+
+ 
+
 <script src="{%static 'assets/plugins/jqvmap/maps/jquery.vmap.usa.js'%}"></script>
+
+ 
+
 <!-- jQuery Knob Chart -->
+
+ 
+
 <script src="{%static 'assets/plugins/jquery-knob/jquery.knob.min.js'%}"></script>
+
+ 
+
 <!-- daterangepicker -->
+
+ 
+
 <script src="{%static 'assets/plugins/moment/moment.min.js'%}"></script>
+
+ 
+
 <script src="{%static 'assets/plugins/daterangepicker/daterangepicker.js'%}"></script>
+
+ 
+
 <!-- Tempusdominus Bootstrap 4 -->
+
+ 
+
 <script src="{%static 'assets/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js'%}"></script>
+
+ 
+
 <!-- Summernote -->
+
+ 
+
 <script src="{%static 'assets/plugins/summernote/summernote-bs4.min.js'%}"></script>
+
+ 
+
 <!-- overlayScrollbars -->
+
+ 
+
 <script src="{%static 'assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js'%}"></script>
+
+ 
+
 <!-- AdminLTE App -->
+
+ 
+
 <script src="{%static 'assets/dist/js/adminlte.js'%}"></script>
+
+ 
+
 <!-- AdminLTE for demo purposes -->
+
+ 
+
 <script src="{%static 'assets/dist/js/demo.js'%}"></script>
+
+ 
+
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+
+ 
+
 <script src="{%static 'assets/dist/js/pages/dashboard.js'%}"></script>
+
+ 
+
 </body>
+
+ 
+
 </html>
